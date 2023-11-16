@@ -1,4 +1,4 @@
-{% set name = "clusterX" %}
+{% set name = "clusterx" %}
 {% set version = "2.1.0rc2" %}
 
 package:
@@ -14,7 +14,7 @@ build:
     - cell=clusterx.cli.main:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
