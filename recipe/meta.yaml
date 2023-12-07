@@ -1,5 +1,5 @@
 {% set name = "clusterx" %}
-{% set version = "2.1.0rc2" %}
+{% set version = "2.1.0rc3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/clusterX-{{ version }}.tar.gz
-  sha256: 8723b8f49aeb2f411715c07f9b7697832852d8f50311e094b652465d94231da6
+  sha256: d7fe2099e0e9f54416a3511aa0eca6b846d4dbdc4846aaf17bd0db3f74ab5ac0
 
 build:
   entry_points:
     - cell=clusterx.cli.main:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
