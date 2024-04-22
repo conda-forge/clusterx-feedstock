@@ -1,5 +1,5 @@
 {% set name = "clusterx" %}
-{% set version = "2.1.0rc3" %}
+{% set version = "2.1.0rc4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/clusterX-{{ version }}.tar.gz
-  sha256: d7fe2099e0e9f54416a3511aa0eca6b846d4dbdc4846aaf17bd0db3f74ab5ac0
+  sha256: 6e6a5b0b5d032095932bc69db2b1eca397d720718c76a44e0112b3952963601f
 
 build:
   entry_points:
