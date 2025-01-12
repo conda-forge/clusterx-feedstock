@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/clusterX-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/clusterX-{{ version }}.tar.gz
   sha256: 1631c2105d44e598c4b8cfce5e8c77b126c38adc48da5c0ba4b11d719bf20682
 
 build:
@@ -14,14 +14,15 @@ build:
     - cell=clusterx.cli.main:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - numpy
     - scipy
     - scikit-learn
@@ -45,6 +46,7 @@ test:
     - cell --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://sol.physik.hu-berlin.de/cell/
