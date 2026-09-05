@@ -1,0 +1,68 @@
+schema_version: 1
+
+context:
+  name: clusterx
+  version: "2.1.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/clusterX-${{ version }}.tar.gz
+  sha256: 1631c2105d44e598c4b8cfce5e8c77b126c38adc48da5c0ba4b11d719bf20682
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - cell=clusterx.cli.main:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - numpy
+    - scipy
+    - scikit-learn
+    - matplotlib-base
+    - ase
+    - plac
+    - pytest
+    - spglib
+    - sympy
+    - nglview
+    - notebook
+    - ipywidgets
+    - pytest-html
+    - tqdm
+
+tests:
+  - python:
+      imports:
+        - clusterx
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - cell --help
+
+about:
+  summary: CELL (aka clusterX) is a python package for building Cluster Expansion models of simple and complex alloys and performing thermodynamical analyses of materials.
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  homepage: http://sol.physik.hu-berlin.de/cell/
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
