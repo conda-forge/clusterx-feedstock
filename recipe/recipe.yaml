@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: clusterx
-  version: 2.4.0
+  version: 2.4.1
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: f07b363294005793730aeb01c0dd6b3fc639ccc70e940540cb6ccd8602fc9eca
+  sha256: 0db14c45e0a5bb6de15fc7c1621f14ee2cb4d249a94dc4d5c4c4c8b6ca7c2ef7
 
 build:
   number: 0
@@ -34,7 +34,7 @@ requirements:
     - ase >=3.25.0
     - plac
     - pytest
-    - spglib
+    - spglib >=2.8.0
     - nglview
     - ipywidgets
     - pytest-html
